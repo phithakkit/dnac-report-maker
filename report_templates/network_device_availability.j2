@@ -1,0 +1,89 @@
+{
+    "name": "{{ report_name | default('Network Devices Report - 30Days') }}",
+    "dataCategory": "Network Devices",
+    "tags": [],
+    "viewGroupId": "6f68ac1e-0d26-4d57-baaa-f440c3c9e488",
+    "viewGroupVersion": "2.0.0",
+    "schedule": {
+        "type": "SCHEDULE_NOW"
+    },
+    "deliveries": [
+        {
+            "type": "DOWNLOAD"
+        }
+    ],
+    "view": {
+        "name": "Network Device Availability",
+        "fieldGroups": [
+            {
+                "fieldGroupName": "response",
+                "fieldGroupDisplayName": "Network Device Availability",
+                "fields": [
+                    {
+                        "name": "nwDeviceFamily",
+                        "displayName": "Device Family"
+                    },
+                    {
+                        "name": "nwDeviceRole",
+                        "displayName": "Device Role"
+                    },
+                    {
+                        "name": "nwDeviceName",
+                        "displayName": "Device Name"
+                    },
+                    {
+                        "name": "managementIpAddr",
+                        "displayName": "Device IP Address"
+                    },
+                    {
+                        "name": "siteHierarchy",
+                        "displayName": "Location"
+                    },
+                    {
+                        "name": "softwareVersion",
+                        "displayName": "Software Version"
+                    },
+                    {
+                        "name": "availability",
+                        "displayName": "Availability (%)"
+                    }
+                ]
+            }
+        ],
+        "filters": [
+            {
+                "type": "MULTI_SELECT_TREE",
+                "name": "Location",
+                "displayName": "Location",
+                "value": [
+                    {
+                        "value": "5a106f16-33aa-4448-95d5-b357c3a56905",
+                        "displayValue": "Global"
+                    }
+                ]
+            },
+            {
+                "type": "MULTI_SELECT",
+                "name": "NwDeviceType",
+                "displayName": "Device Type",
+                "value": []
+            },
+            {
+                "type": "TIME_RANGE",
+                "name": "TimeRange",
+                "displayName": "Time Range",
+                "value": {
+                    "timeRangeOption": "CUSTOM",
+                    "startDateTime": {{start_date_time}},
+                    "endDateTime": {{end_date_time}},
+                    "timeZoneId": "America/Chicago"
+                }
+            }
+        ],
+        "format": {
+            "name": "CSV",
+            "formatType": "CSV"
+        },
+        "viewId": "79c9c720-afc0-4753-9a22-ce8734959f76"
+    }
+}
